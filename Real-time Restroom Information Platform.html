@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restroom Information Platform</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background-color: #007ACC;
+    color: #FFF;
+    text-align: center;
+    padding: 20px;
+}
+
+main {
+    padding: 20px;
+}
+
+#restroom-availability {
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+#restroom-cleanliness {
+    border: 1px solid #3BB143;
+    padding: 20px;
+    border-radius: 5px;
+    color: #3BB143;
+    font-weight: bold;
+}
+
+</style>
+</head>
+<body>
+    <header>
+        <h1>Real-time Restroom Information Platform</h1>
+    </header>
+    <main>
+        <div id="restroom-availability">
+            <!-- Restroom availability data will be displayed here -->
+        </div>
+        <div id="restroom-cleanliness">
+            <!-- Restroom cleanliness data will be displayed here -->
+        </div>
+    </main>
+    <script>
+	// Simulated real-time data
+function generateRandomData() {
+    return {
+        availability: Math.random() < 0.5 ? 'Available' : 'Occupied',
+        cleanliness: Math.random() < 0.5 ? 'Clean' : 'Needs Cleaning'
+    };
+}
+
+function updateData() {
+    const restroomAvailabilityElement = document.getElementById('restroom-availability');
+    const restroomCleanlinessElement = document.getElementById('restroom-cleanliness');
+
+    setInterval(() => {
+        const data = generateRandomData();
+        const timestamp = new Date().toLocaleTimeString();
+
+        // Update the data display
+        const availabilityData = `<p>${timestamp}: Restroom Availability - ${data.availability}</p>`;
+        const cleanlinessData = `<p>${timestamp}: Restroom Cleanliness - ${data.cleanliness}</p>`;
+
+        restroomAvailabilityElement.innerHTML = availabilityData;
+        restroomCleanlinessElement.innerHTML = cleanlinessData;
+    }, 3000); // Update data every 3 seconds
+}
+
+window.addEventListener('load', () => {
+    updateData();
+});
+</script>
+</body>
+</html>
